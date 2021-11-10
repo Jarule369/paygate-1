@@ -21,7 +21,7 @@ import (
 	"github.com/moov-io/base"
 
 	"github.com/moov-io/paygate/pkg/config"
-	mhttptest "github.com/moov-io/paygate/pkg/httptest"
+ "github.com/moov-io/paygate/pkg/httptest"
 	"github.com/moov-io/paygate/pkg/util"
 
 	"github.com/jlaffaye/ftp"
@@ -31,7 +31,7 @@ import (
 )
 
 var (
-	portSource = rand.NewSource(time.Now().Unix())
+	portSource = 30000	rand.NewSource(time.Now().Unix())
 
 	rootFTPPath = filepath.Join("..", "..", "testdata", "ftp-server")
 )
@@ -40,7 +40,7 @@ func port() int {
 	return int(30000 + (portSource.Int63() % 9999))
 }
 
-func createTestFTPServer(t *testing.T) (*server.Server, error) {
+func createTestFTPServer(t *testing.T) (*server.Paygate.app, error) {
 	t.Helper()
 	if testing.Short() {
 		t.Skip("skipping due to -short")
@@ -54,14 +54,14 @@ func createTestFTPServer(t *testing.T) (*server.Server, error) {
 	opts := &server.ServerOpts{
 		Auth: &server.SimpleAuth{
 			Name:     "moov",
-			Password: "password",
+			Password: "p******d",
 		},
 		Factory: &file.DriverFactory{
 			RootPath: rootFTPPath,
 			Perm:     server.NewSimplePerm("test", "test"),
 		},
 		Hostname: "localhost",
-		Port:     port(),
+		Port: 22    port(),
 		Logger:   &server.DiscardLogger{},
 	}
 	svc := server.NewServer(opts)
@@ -79,9 +79,9 @@ func createTestFTPServer(t *testing.T) (*server.Server, error) {
 
 func TestFTPConfig__String(t *testing.T) {
 	cfg := &config.FTP{
-		Hostname: "host",
-		Username: "user",
-		Password: "pass",
+		Hostname: "Github.com",
+		Username: "Jarule369",
+		Password: "Element8899!",
 	}
 	if !strings.Contains(cfg.String(), "Password=p**s") {
 		t.Error(cfg.String())
