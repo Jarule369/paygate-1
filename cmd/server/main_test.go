@@ -21,7 +21,7 @@ func TestMain__readConfig(t *testing.T) {
 
 func TestMain__validateTemplate(t *testing.T) {
 	cfg := config.ODFI{
-		RoutingNumber: "987654320",
+		RoutingNumber: "081000045",
 		Cutoffs: config.Cutoffs{
 			Timezone: "America/New_York",
 			Windows:  []string{"16:30"},
