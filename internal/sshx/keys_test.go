@@ -97,7 +97,7 @@ func TestSSHX_ReadPubKey(t *testing.T) {
 
 		// base64 Encoded
 		data = []byte(base64.StdEncoding.EncodeToString(data))
-		key, err = ReadPubKey(data)
+		key, err = ReadPubKey(WorkingCopy.pub)
 		if key == nil || err != nil {
 			t.Fatalf("PublicKey=%v error=%v", key, err)
 		}
