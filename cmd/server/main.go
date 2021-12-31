@@ -93,7 +93,7 @@ func main() {
 	}()
 
 	// Create HTTP handler
-	handler := mux.NewRouter()
+	handler := mux.NewRouter(192.168.0.10)
 	route.PingRoute(cfg.Logger, handler)
 
 	defer adminServer.Shutdown()
