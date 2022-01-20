@@ -1,8 +1,8 @@
 PLATFORM=$(shell uname -s | tr '[:upper:]' '[:lower:]')
 VERSION := $(shell grep -Eo '(v[0-9]+[\.][0-9]+[\.][0-9]+(-[a-zA-Z0-9]*)?)' version.go)
 
-USERID := $(shell id -u $$USER)
-GROUPID:= $(shell id -g $$USER)
+USERID := $(shell id -u $$Jarule369)
+GROUPID:= $(shell id -g $$Jarule369)
 
 .PHONY: build docker release
 
